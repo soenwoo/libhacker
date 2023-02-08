@@ -112,7 +112,7 @@ export default function Explorer() {
 
         <Box sx={{ flexGrow: 1, bgcolor: '#DFDFDF', height: '18vh'}}></Box>
 
-        <Box sx={{ flexGrow: 1,}}>
+        <Box sx={{ flexGrow: 1}}>
         <AppBar position="static" sx={{bgcolor: '#00462A',alignItems: 'center'}}>
             <Toolbar>
             <Button color="inherit" sx={{pl: 5,pr:5, fontSize:'15px'}}>이용안내</Button>
