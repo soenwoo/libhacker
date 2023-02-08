@@ -91,22 +91,8 @@ const Search = styled('div')(({ theme }) => ({
     );
   };
 
-export default function BookInfo() {
+export default function Home() {
 
-    const [like, setLike] = useState(false);
-    const handleLike = () => {
-        setLike(!like)
-    }
-
-    const [book, setBook] = useState(false);
-    const handleBook = () => {
-        setBook(!book)
-    }
-
-    const [wait, setWait] = useState(false);
-    const handleWait = () => {
-        setWait(!wait)
-    }
 
     return (
     <Container sx="xl">
