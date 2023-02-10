@@ -123,7 +123,6 @@ export default function BookInfo() {
               <Box sx={{display: 'flex', justifyContent: 'space-between'}}>
                 {props.userComment}
                 </Box>
-            
             </div>
          
         </div>
@@ -131,7 +130,7 @@ export default function BookInfo() {
         </Box>
       );
     }
-
+// dd
     
 
     return (
