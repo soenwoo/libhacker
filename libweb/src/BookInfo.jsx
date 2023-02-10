@@ -30,10 +30,18 @@ import AddCircleIcon from '@mui/icons-material/AddCircle';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
+import {FaHeart} from 'react-icons/fa';
+import {MdGppGood} from 'react-icons/md';
+
 
 //images
-import book1 from './assets/images/foxBook.jpeg';
+import bookList1 from './assets/images/bookList1.jpeg';
+import bookList2 from './assets/images/bookList2.jpeg';
+import bookList3 from './assets/images/bookList3.jpeg';
+import mainBook from './assets/images/manyidea.jpeg';
 import { textAlign } from '@mui/system';
+import libLogo from './assets/images/libLogo.png';
+import { TextField } from '@mui/material';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -94,25 +102,54 @@ const Search = styled('div')(({ theme }) => ({
 
 export default function BookInfo() {
 
-    const [like, setLike] = useState(false);
-    const handleLike = () => {
-        setLike(!like)
+    let[userName] = useState('OOO님');
+    let [comment, setComment] = useState('');
+    let [feedComments, setFeedComments] = useState([]);
+    let [isValid, setIsValid] = useState(false);
+
+    let post = e => {
+      const copyFeedComments = [...feedComments];
+      copyFeedComments.push(comment);
+      setFeedComments(copyFeedComments);
+      setComment('');
+    };
+
+    const CommentList = props => {
+      return (
+        <Box sx={{display: 'flex', width: 500}}>
+        <div className='userCommentBox'>
+          <p className='userName'><MdGppGood/>{props.userName}</p>
+            <div className='userComment'>
+              <Box sx={{display: 'flex', justifyContent: 'space-between'}}>
+                {props.userComment}
+                </Box>
+            
+            </div>
+         
+        </div>
+
+        </Box>
+      );
     }
 
-    const [book, setBook] = useState(false);
-    const handleBook = () => {
-        setBook(!book)
-    }
-
-    const [wait, setWait] = useState(false);
-    const handleWait = () => {
-        setWait(!wait)
-    }
+    
 
     return (
     <Container sx="xl">
 
-        <Box sx={{ flexGrow: 1, bgcolor: '#DFDFDF', height: '18vh'}}></Box>
+      <Box sx={{ flexGrow: 1, height: '18vh'}}>
+            <Box  sx={{ display: 'flex', flexGrow: 1, bgcolor: '#DFDFDF',
+                    height: '3vh', justifyContent: 'flex-end'}}>
+                <Box sx={{ display: 'flex',
+                    fileDirection: "row",
+                    }}>
+                    <Typography sx={{mr: 2,p: 0.5,fontSize: '10px', letterSpacing: 1, fontWeight: 300}}>login | 회원가입 | 내서재 | ENGLISH</Typography>
+                </Box>
+            </Box>
+            <Link to="/" style={{ textDecoration: "none", color:'white' }}>
+                <img src={libLogo} alt="logo" style={{width:300, height:100}}></img>
+            </Link>
+        </Box>
 
         <Box sx={{ flexGrow: 1,}}>
         <AppBar position="static" sx={{bgcolor: '#00462A',alignItems: 'center'}}>
@@ -177,33 +214,31 @@ export default function BookInfo() {
                     <Typography sx={{ mt: 3, fontSize: '25px',
                                 fontWeight:'600',
                                 color: 'black', 
-                                bgcolor: 'balck', 
                                 align:'center'
                                 }}>검색 서비스</Typography> 
                 </Box>
-                <br></br>
-                <Box sx={{ flexGrow: 1,
-                display: 'flex', 
-                flexDirection: 'row'}}>
-                    <img src={book1} alt="book1" style={{width:210, height:280}}></img>
-                    <Box>
-                        <Typography sx={{ml:3}}>표제/책임사항 아무도 모르니까 괜찮아/</Typography>
-                        <Typography sx={{ml:3}}>길해연 글; 김미은 그림</Typography>
-                        <Typography sx={{ml:3}}>발행사항 서울: 책먹는 여우, 2011</Typography>
-                        <Typography sx={{ml:3}}>형태사항 33p; 삽화; 25cm</Typography>
-                        <Typography sx={{ml:3}}>총서사항 문용린 교수님과 함께하는 정양용 책배소 이야기</Typography>
-                        <Typography sx={{ml:3}}>주기사항 기획: 문용린</Typography>
-                        <Typography sx={{ml:3}}>표준번호</Typography>
-                        <Typography sx={{ml:3}}>분류기호 한국십진분류법: 199.4</Typography>
-                        <Typography sx={{ml:3}}>도서관: 오도도서관</Typography>
-                        <Typography sx={{ml:3}}>마크정보</Typography>
 
-                        <br></br>
-                        <Typography sx={{ml:3, fontWeight: 600,letterSpacing:2}}>키워드 #동화 #여우 #이솝우화 #교훈</Typography>
+                <Box sx={{ flexGrow: 1,
+                    display: 'flex',  
+                    flexDirection:'row'}}>
+                    <Box sx={{display:'flex'}}>
+                      <img src={mainBook} alt="mainBook" style={{width:210, height:280}}></img>
+                    </Box>
+                    <Box sx={{display:'flex', flexDirection:'column'}}>
+                      <Box sx={{display:'flex'}}>
+                        <Typography sx={{ml:3, fontSize: 25, fontWeight:700, mb: 3, mt: 3}}>나는 생각이 너무 많아: 넘치는 생각 때문에 삶이 피곤한 사람들을 위한 심리 처방</Typography>
+                      </Box>
+                      <Box>
+                        <Typography sx={{ml:3, fontSize: 17}}>저자사항 | 크리스텔 프티콜랭 지음;, 이세진 옮김</Typography>
+                        <Typography sx={{ml:3, fontSize: 17}}>발행사항 | 부키, 2014 인쇄자료(책자형), ₩ 14800</Typography>
+                        <Typography sx={{ml:3, fontSize: 17}}>형태사항 | 272 p.; 22 cm</Typography>
+                        <Typography sx={{ml:3, fontSize: 17}}>표준부호 | ISBN : 9788960513914</Typography>
+                        <Typography sx={{ml:3, fontSize: 17}}>십진분류 | 181, 각론</Typography>
+                      </Box>      
                     </Box>
                 </Box>
 
-                <Box display="flex" sx={{ height: '10vh'}} >
+                {/* <Box display="flex" sx={{ height: '10vh'}} >
                     <Typography sx={{ mt: 5, fontSize: '20px',
                                 fontWeight:'600',
                                 color: 'black', 
@@ -229,37 +264,72 @@ export default function BookInfo() {
                     sx={{ border: '1px solid #DFDFDF',
                     borderRadius:'10px',
                     height: '20vh', mt:1}} >
-                </Box>
+                </Box> */}
 
+               {/* 댓글창 */}
                 <Box display="flex" sx={{ height: '10vh'}} >
                     <Typography sx={{ mt: 5, fontSize: '20px',
                                 fontWeight:'600',
-                                color: 'black', 
-                                bgcolor: 'balck', 
+                                color: 'black',  
                                 align:'center'
                                 }}>댓글</Typography> 
                 </Box>
-                <Box display="flex" 
-                    sx={{ border: '1px solid #DFDFDF',
-                    borderRadius:'10px',
-                    height: '20vh',
-                    mt: 1}} >
-                    <Comments/>
+                <Box 
+                    sx={{ display: 'flex',
+                    mt: 1, flexDirection:'column', alignItems:'center',
+                    // border: '1px solid #DFDFDF',
+                    // borderRadius:'10px',
+                     }} >
+                    <Box sx={{ display: 'flex'
+                    ,alignItems:'center', flexDirection: 'row',
+                    width: '90%'}}>
+                      <TextField
+                          sx={{width: '100%'}}
+                          type="text"
+                          className="inputComment"
+                          placeholder='댓글 달기...'
+                          onChange={e => {
+                            setComment(e.target.value);
+                          }}
+                          onKeyUp={e => {
+                            e.target.value.length > 0
+                                ? setIsValid(true)
+                                : setIsValid(false);
+                          }}
+                          value={comment}
+                      />
+                      <Button
+                          sx={{fontSize: 16, p:1.6}}
+                          variant="outlined"
+                          className={
+                            comment.length > 0
+                            ? 'submitCommentActive'
+                            : 'submitCommentInactive'
+                          }
+                          onClick={post}
+                          disabled={isValid ? false :true}
+                      >게시</Button>
+
+                    </Box>
+                    
+                    <Box sx={{display: 'flex', flexDirection: 'column',
+                          alignItems: 'flex-start', width: '90%'}}>
+                    {feedComments.map((commentArr,i)=>{
+                          return(
+                            <CommentList
+                                userName={userName}
+                                userComment={commentArr}
+                                key={i}
+                                />
+                          );
+                        })}
+                    </Box>      
+
+
+
+                    {/* <Comments/> */}
                 </Box>
 
-                <Box display="flex" sx={{ height: '10vh'}} >
-                    <Typography sx={{ mt: 5, fontSize: '20px',
-                                fontWeight:'600',
-                                color: 'black', 
-                                bgcolor: 'balck', 
-                                align:'center'
-                                }}>이 책과 비슷한 도서</Typography>
-                </Box>
-                <Box display="flex" 
-                    sx={{ border: '1px solid #DFDFDF',
-                    borderRadius:'10px',
-                    height: '20vh', mt:1}} >
-                </Box>
             
             </Box>
             

@@ -16,6 +16,7 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import IconButton from '@mui/material/IconButton';
 import {Link} from 'react-router-dom';
+import Carousel from 'react-material-ui-carousel';
 
 
 //mui-icons
@@ -31,6 +32,13 @@ import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
 //images
 import book1 from './assets/images/foxBook.jpeg';
 import { textAlign } from '@mui/system';
+import libLogo from './assets/images/libLogo.png';
+import bookList1 from './assets/images/bookList1.jpeg';
+import bookList2 from './assets/images/bookList2.jpeg';
+import bookList3 from './assets/images/bookList3.jpeg';
+import am1 from './assets/images/am1.jpg';
+import am2 from './assets/images/am2.jpg';
+import am3 from './assets/images/am3.jpg';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -78,11 +86,11 @@ const Search = styled('div')(({ theme }) => ({
     return (
       <div
         style={{
-          width: "100%",
+          width: "47%",
           textAlign: "center",
           borderBottom: "1px solid #aaa",
           lineHeight: "0.1em",
-          margin: "10px 0 20px",
+          margin: "10px 10px 20px",
         }}
       >
       </div>
@@ -91,26 +99,23 @@ const Search = styled('div')(({ theme }) => ({
 
 
 export default function Explorer() {
-
-    const [like, setLike] = useState(false);
-    const handleLike = () => {
-        setLike(!like)
-    }
-
-    const [book, setBook] = useState(false);
-    const handleBook = () => {
-        setBook(!book)
-    }
-
-    const [wait, setWait] = useState(false);
-    const handleWait = () => {
-        setWait(!wait)
-    }
-
     return (
     <Container sx="xl">
 
-        <Box sx={{ flexGrow: 1, bgcolor: '#DFDFDF', height: '18vh'}}></Box>
+        <Box sx={{ flexGrow: 1, height: '18vh'}}>
+            <Box  sx={{ display: 'flex', flexGrow: 1, bgcolor: '#EFEFEF',
+                    height: '3vh', justifyContent: 'flex-end'}}>
+                <Box sx={{ display: 'flex',
+                    fileDirection: "row",
+                    }}>
+                    <Typography sx={{mr: 2,p: 0.5,fontSize: '10px', letterSpacing: 1, fontWeight: 300}}>login | 회원가입 | 내서재 | ENGLISH</Typography>
+                </Box>
+            </Box>
+            <Link to="/" style={{ textDecoration: "none", color:'white' }}>
+                <img src={libLogo} alt="logo" style={{width:300, height:100}}></img>
+            </Link>
+        </Box>
+
 
         <Box sx={{ flexGrow: 1,}}>
         <AppBar position="static" sx={{bgcolor: '#00462A',alignItems: 'center'}}>
@@ -174,7 +179,7 @@ export default function Explorer() {
                 m:4,
                 }}>
                 <Box display="flex" sx={{ height: '10vh'}} >
-                    <Typography sx={{ mt: 3, 
+                    <Typography sx={{ mt: 1, 
                         fontSize: '25px', 
                         fontWeight:'600',
                         color: 'black', 
@@ -184,249 +189,60 @@ export default function Explorer() {
                 
               
                 <Typography variant="body2" 
-                            sx={{mt: 1, fontSize:'15px'}}>
+                            sx={{ fontSize:'18px'}}>
                 AI가 추천한 OOO님 맞춤 도서 목록입니다.</Typography>
                 <br></br>
                 <br></br>
                 <Box sx={{display: 'flex',
                         flexDirection: 'row',
-                        justifyContent: 'space-between',
+                        justifyContent: 'space-around',
                        }}>
-                    <Typography>도서 | XX 건</Typography>
-                    <AddIcon sx={{alignItems: 'center'}}></AddIcon>
+                    <Typography sx={{fontSize:20}}>OOO님 맞춤 취향 도서</Typography>
+                    <Typography sx={{fontSize:20}}>'아몬드'를 읽은 당신에게</Typography>
                 </Box>
                 
-                <HorizonLine />
-                
-                {/* 카드 */}
-                <Card sx={{ height: '20vh' }}>
-                    <CardContent>
-                        <Box sx={{ display: 'flex',
-                            flexDirection: 'row',
-                            justifyContent: 'space-between'}}>
-                            <img src={book1} alt="book1" style={{width:80, height:110}}></img>
-                            <Box sx={{display: 'flex',
-                                ml:2,
-                                flexDirection: 'column'}}>
-                                <Typography variant="h6" 
-                                            sx={{ mb: 1.5 }}>
-                                책 먹는 여우
-                                </Typography>
-                                <Typography variant="body1" 
-                                            sx={{ mb: 1.5 }}>
-                                글쓴이 | 프란치스카 비어만 출판사 | 주니어김영사
-                                </Typography>
+                <Box sx={{display:'flex', flexDirection:'row'}}>
+                    <HorizonLine />
+                    <HorizonLine />
 
-                                <Typography variant="body1" 
-                                            sx={{ mb: 1.5 }}>
-                                #동화 #여우 #이솝우화 #교훈
-                                </Typography>
-                            </Box>
-                            
-                            <Box sx={{ mr: 2,
-                                    alignItem: 'center',
-                                    justifyContent: 'center',
-                                   }}>
-                                
-
-                                <Typography sx={{color:'#00462A',
-                                            fontSize:'25px',
-                                            fontWeight:'600',
-                                            textAlign:'right'}}>
-                                대출 가능
-                                </Typography>
-                                <Typography sx={{color:'#00462A',
-                                            fontSize:'20px',
-                                            fontWeight:'600',
-                                            textAlign:'right', mr: 1.7}}>
-                                [비치중]
-                                </Typography>
-
-                                <br></br>
-                                
-                                <Box sx={{display: 'flex',flexDirection: 'row'}}>
-                                    <span className="book" onClick={handleBook}
-                                        style={{ margin: 3}}>
-                                        {book ? (<AddCircleIcon sx={{fontSize:'small', color:'black'}}/>) : (<AddCircleOutlineIcon sx={{fontSize:'small'}}></AddCircleOutlineIcon>)}
-                                    </span>
-                                    <Typography sx={{fontSize: '15px'}}>도서예약신청</Typography>
-                                    <span className="book" onClick={handleWait}
-                                        style={{ margin: 3}}>
-                                        {wait ? (<AccessTimeIcon sx={{fontSize:'small', color:'black'}}/>) : (<AccessTimeFilledIcon sx={{fontSize:'small'}}></AccessTimeFilledIcon>)}
-                                    </span>
-                                    <Typography sx={{fontSize: '15px'}}>상호대차신청</Typography>
-                                    <span className="like" onClick={handleLike}
-                                        style={{ margin: 3}}>
-                                        {like ? (<FavoriteIcon sx={{fontSize:'small', color:'red'}}/>) : (<FavoriteBorderIcon sx={{fontSize:'small'}}></FavoriteBorderIcon>)}
-                                    </span>
-                                    <Typography sx={{fontSize: '15px'}}>관심도서담기</Typography>
-
-                                </Box>
-                            </Box>
-                        </Box>
-                        
-                    </CardContent>
-                </Card>
-                <br></br>
-                <Card sx={{ height: '20vh' }}>
-                    <CardContent>
-                        <Box sx={{ display: 'flex',
-                            flexDirection: 'row',
-                            justifyContent: 'space-between'}}>
-                            <img src={book1} alt="book1" style={{width:80, height:110}}></img>
-                            <Box sx={{display: 'flex',
-                                ml:2,
-                                flexDirection: 'column'}}>
-                                <Typography variant="h6" 
-                                            sx={{ mb: 1.5 }}>
-                                책 먹는 여우
-                                </Typography>
-                                <Typography variant="body1" 
-                                            sx={{ mb: 1.5 }}>
-                                글쓴이 | 프란치스카 비어만 출판사 | 주니어김영사
-                                </Typography>
-
-                                <Typography variant="body1" 
-                                            sx={{ mb: 1.5 }}>
-                                #동화 #여우 #이솝우화 #교훈
-                                </Typography>
-                            </Box>
-                            
-                            <Box sx={{ mr: 2,
-                                    alignItem: 'center',
-                                    justifyContent: 'center',
-                                   }}>
-                                
-
-                                <Typography sx={{color:'#00462A',
-                                            fontSize:'25px',
-                                            fontWeight:'600',
-                                            textAlign:'right'}}>
-                                대출 가능
-                                </Typography>
-                                <Typography sx={{color:'#00462A',
-                                            fontSize:'20px',
-                                            fontWeight:'600',
-                                            textAlign:'right', mr: 1.7}}>
-                                [비치중]
-                                </Typography>
-
-                                <br></br>
-                                
-                                <Box sx={{display: 'flex',flexDirection: 'row'}}>
-                                    <span className="book" onClick={handleBook}
-                                        style={{ margin: 3}}>
-                                        {book ? (<AddCircleIcon sx={{fontSize:'small', color:'black'}}/>) : (<AddCircleOutlineIcon sx={{fontSize:'small'}}></AddCircleOutlineIcon>)}
-                                    </span>
-                                    <Typography sx={{fontSize: '15px'}}>도서예약신청</Typography>
-                                    <span className="book" onClick={handleWait}
-                                        style={{ margin: 3}}>
-                                        {wait ? (<AccessTimeIcon sx={{fontSize:'small', color:'black'}}/>) : (<AccessTimeFilledIcon sx={{fontSize:'small'}}></AccessTimeFilledIcon>)}
-                                    </span>
-                                    <Typography sx={{fontSize: '15px'}}>상호대차신청</Typography>
-                                    <span className="like" onClick={handleLike}
-                                        style={{ margin: 3}}>
-                                        {like ? (<FavoriteIcon sx={{fontSize:'small', color:'red'}}/>) : (<FavoriteBorderIcon sx={{fontSize:'small'}}></FavoriteBorderIcon>)}
-                                    </span>
-                                    <Typography sx={{fontSize: '15px'}}>관심도서담기</Typography>
-
-                                </Box>
-                            </Box>
-                        </Box>
-                        
-                    </CardContent>
-                </Card>
-                <br></br>
-                <Card sx={{ height: '20vh' }}>
-                    <CardContent>
-                        <Box sx={{ display: 'flex',
-                            flexDirection: 'row',
-                            justifyContent: 'space-between'}}>
-                            <img src={book1} alt="book1" style={{width:80, height:110}}></img>
-                            <Box sx={{display: 'flex',
-                                ml:2,
-                                flexDirection: 'column'}}>
-                                <Typography variant="h6" 
-                                            sx={{ mb: 1.5 }}>
-                                책 먹는 여우
-                                </Typography>
-                                <Typography variant="body1" 
-                                            sx={{ mb: 1.5 }}>
-                                글쓴이 | 프란치스카 비어만 출판사 | 주니어김영사
-                                </Typography>
-
-                                <Typography variant="body1" 
-                                            sx={{ mb: 1.5 }}>
-                                #동화 #여우 #이솝우화 #교훈
-                                </Typography>
-                            </Box>
-                            
-                            <Box sx={{ mr: 2,
-                                    alignItem: 'center',
-                                    justifyContent: 'center',
-                                   }}>
-                                
-
-                                <Typography sx={{color:'#00462A',
-                                            fontSize:'25px',
-                                            fontWeight:'600',
-                                            textAlign:'right'}}>
-                                대출 가능
-                                </Typography>
-                                <Typography sx={{color:'#00462A',
-                                            fontSize:'20px',
-                                            fontWeight:'600',
-                                            textAlign:'right', mr: 1.7}}>
-                                [비치중]
-                                </Typography>
-
-                                <br></br>
-                                
-                                <Box sx={{display: 'flex',flexDirection: 'row'}}>
-                                    <span className="book" onClick={handleBook}
-                                        style={{ margin: 3}}>
-                                        {book ? (<AddCircleIcon sx={{fontSize:'small', color:'black'}}/>) : (<AddCircleOutlineIcon sx={{fontSize:'small'}}></AddCircleOutlineIcon>)}
-                                    </span>
-                                    <Typography sx={{fontSize: '15px'}}>도서예약신청</Typography>
-                                    <span className="book" onClick={handleWait}
-                                        style={{ margin: 3}}>
-                                        {wait ? (<AccessTimeIcon sx={{fontSize:'small', color:'black'}}/>) : (<AccessTimeFilledIcon sx={{fontSize:'small'}}></AccessTimeFilledIcon>)}
-                                    </span>
-                                    <Typography sx={{fontSize: '15px'}}>상호대차신청</Typography>
-                                    <span className="like" onClick={handleLike}
-                                        style={{ margin: 3}}>
-                                        {like ? (<FavoriteIcon sx={{fontSize:'small', color:'red'}}/>) : (<FavoriteBorderIcon sx={{fontSize:'small'}}></FavoriteBorderIcon>)}
-                                    </span>
-                                    <Typography sx={{fontSize: '15px'}}>관심도서담기</Typography>
-
-                                </Box>
-                            </Box>
-                        </Box>
-                        
-                    </CardContent>
-                </Card>
-                
-                <br></br>
-                <br></br>
-                <br></br>
-
-                <Box sx={{display: 'flex',
-                        flexDirection: 'row',
-                        justifyContent: 'space-between',
-                       }}>
-                    <Typography>멀티미디어 | 0 건</Typography>
-                    <AddIcon sx={{alignItems: 'center'}}></AddIcon>
                 </Box>
                 
-                <HorizonLine />
+
+                <Box sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    flexDirection:'row',
+                    justifyContent: 'space-around'
+                    }}>
+                    <Carousel sx={{width:200}}>
+                        <div className="c1image">
+                            <img src={bookList1} alt="banner1" style={{maxWidth: "100%"}} />
+                        </div>
+                        <div className="c1image">
+                            <img src={bookList2} alt="banner1" style={{maxWidth: "100%"}}/>
+                        </div>
+                        <div className="c1image">
+                            <img src={bookList3} alt="banner1" style={{maxWidth: "100%"}}/>
+                        </div>
+                    </Carousel>
+
+                    <Carousel sx={{width:200}}>
+                        <div className="c1image">
+                            <img src={am1} alt="banner1" style={{maxWidth: "100%"}} />
+                        </div>
+                        <div className="c1image">
+                            <img src={am2} alt="banner1" style={{maxWidth: "100%"}}/>
+                        </div>
+                        <div className="c1image">
+                            <img src={am3} alt="banner1" style={{maxWidth: "100%"}}/>
+                        </div>
+                    </Carousel>
+                </Box>
                 
             </Box>
             
 
-        </Box>
-
-        
-       
+        </Box> 
 
 
 

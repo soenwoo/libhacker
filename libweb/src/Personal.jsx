@@ -33,6 +33,7 @@ import QrCodeScannerIcon from '@mui/icons-material/QrCodeScanner';
 import book1 from './assets/images/foxBook.jpeg';
 import PersonalImage from './assets/images/PersonalImage.png';
 import { textAlign } from '@mui/system';
+import libLogo from './assets/images/libLogo.png';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -107,7 +108,19 @@ export default function Explorer() {
     return (
     <Container sx="xl">
 
-        <Box sx={{ flexGrow: 1, bgcolor: '#DFDFDF', height: '18vh'}}></Box>
+        <Box sx={{ flexGrow: 1, height: '18vh'}}>
+            <Box  sx={{ display: 'flex', flexGrow: 1, bgcolor: '#DFDFDF',
+                    height: '3vh', justifyContent: 'flex-end'}}>
+                <Box sx={{ display: 'flex',
+                    fileDirection: "row",
+                    }}>
+                    <Typography sx={{mr: 2,p: 0.5,fontSize: '10px', letterSpacing: 1, fontWeight: 300}}>login | 회원가입 | 내서재 | ENGLISH</Typography>
+                </Box>
+            </Box>
+            <Link to="/" style={{ textDecoration: "none", color:'white' }}>
+                <img src={libLogo} alt="logo" style={{width:300, height:100}}></img>
+            </Link>
+        </Box>
 
         <Box sx={{ flexGrow: 1,}}>
         <AppBar position="static" sx={{bgcolor: '#00462A',alignItems: 'center'}}>
@@ -170,7 +183,7 @@ export default function Explorer() {
                 m:4,
                 }}>
                 <Box display="flex" sx={{ height: '10vh'}} >
-                    <Typography sx={{ mt: 3, ml:1,
+                    <Typography sx={{ mt:2, ml:1,
                         fontSize: '25px', 
                         fontWeight:'600',
                         color: 'black', 

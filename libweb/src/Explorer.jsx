@@ -29,8 +29,11 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
 
 //images
-import book1 from './assets/images/foxBook.jpeg';
+import book1 from './assets/images/manyidea.jpeg';
+import book2 from './assets/images/sensitive.jpeg';
+import book3 from './assets/images/dream.jpeg';
 import { textAlign } from '@mui/system';
+import libLogo from './assets/images/libLogo.png';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -110,7 +113,19 @@ export default function Explorer() {
     return (
     <Container sx="xl">
 
-        <Box sx={{ flexGrow: 1, bgcolor: '#DFDFDF', height: '18vh'}}></Box>
+        <Box sx={{ flexGrow: 1, height: '18vh'}}>
+            <Box  sx={{ display: 'flex', flexGrow: 1, bgcolor: '#EFEFEF',
+                    height: '3vh', justifyContent: 'flex-end'}}>
+                <Box sx={{ display: 'flex',
+                    fileDirection: "row",
+                    }}>
+                    <Typography sx={{mr: 2,p: 0.5,fontSize: '10px', letterSpacing: 1, fontWeight: 300}}>login | 회원가입 | 내서재 | ENGLISH</Typography>
+                </Box>
+            </Box>
+            <Link to="/" style={{ textDecoration: "none", color:'white' }}>
+                <img src={libLogo} alt="logo" style={{width:300, height:100}}></img>
+            </Link>
+        </Box>
 
         <Box sx={{ flexGrow: 1}}>
         <AppBar position="static" sx={{bgcolor: '#00462A',alignItems: 'center'}}>
@@ -188,7 +203,7 @@ export default function Explorer() {
               
                 <Typography variant="body2" 
                             sx={{mt: 1,pl:3}}>
-                "책 먹는"에 해당하는 자료의 검색 결과는 총 XX건 입니다.</Typography>
+                "#infp"에 해당하는 자료의 검색 결과는 총 XX건 입니다.</Typography>
                 <br></br>
                 <Box sx={{display: 'flex',
                         flexDirection: 'row',
@@ -206,32 +221,31 @@ export default function Explorer() {
                         <CardContent>
                             <Box sx={{ display: 'flex',
                                 flexDirection: 'row',
-                                justifyContent: 'space-between'}}>
+                                }}>
                                 
                                 <img src={book1} alt="book1" style={{width:80, height:110}}></img>
                                 <Box sx={{display: 'flex',
-                                    ml:2,
+                                    ml:5,
                                     flexDirection: 'column'}}>
                                     <Link to="/bookinfo" style={{ textDecoration: "none", color:'black' }}>
                                     <Typography variant="h6" 
                                                 sx={{ mb: 1.5 }}>
-                                    책 먹는 여우
+                                    나는 생각이 너무 많아
                                     </Typography>
                                     <Typography variant="body1" 
                                                 sx={{ mb: 1.5 }}>
-                                    글쓴이 | 프란치스카 비어만 출판사 | 주니어김영사
+                                    글쓴이 | 크리스텔 프티콜랭 출판사 | 부키
                                     </Typography>
 
                                     <Typography variant="body1" 
                                                 sx={{ mb: 1.5 }}>
-                                    #동화 #여우 #이솝우화 #교훈
+                                    #인문 #심리학 #성격 #infp #예민 #피곤 #감정
                                     </Typography>
                                     </Link>
                                 </Box>
                                 
-                                <Box sx={{ mr: 2,
-                                        alignItem: 'center',
-                                        justifyContent: 'center',
+                                <Box sx={{ mr: 2, ml:20,
+                                        
                                     }}>
                                     
 
@@ -258,7 +272,7 @@ export default function Explorer() {
                                         <Typography sx={{fontSize: '15px'}}>도서예약신청</Typography>
                                         <span className="book" onClick={handleWait}
                                             style={{ margin: 3}}>
-                                            {wait ? (<AccessTimeIcon sx={{fontSize:'small', color:'black'}}/>) : (<AccessTimeFilledIcon sx={{fontSize:'small'}}></AccessTimeFilledIcon>)}
+                                            {wait ? (<AccessTimeFilledIcon sx={{fontSize:'small', color:'black'}}/>) : (<AccessTimeIcon sx={{fontSize:'small'}}></AccessTimeIcon>)}
                                         </span>
                                         <Typography sx={{fontSize: '15px'}}>상호대차신청</Typography>
                                         <span className="like" onClick={handleLike}
@@ -278,28 +292,28 @@ export default function Explorer() {
                 <Card sx={{ height: '20vh' }}>
                     <CardContent>
                         <Box sx={{ display: 'flex',
-                            flexDirection: 'row',
-                            justifyContent: 'space-between'}}>
-                            <img src={book1} alt="book1" style={{width:80, height:110}}></img>
+                            flexDirection: 'row'
+                            }}>
+                            <img src={book2} alt="book2" style={{width:80, height:110}}></img>
                             <Box sx={{display: 'flex',
-                                ml:2,
+                                ml:5,
                                 flexDirection: 'column'}}>
                                 <Typography variant="h6" 
                                             sx={{ mb: 1.5 }}>
-                                책 먹는 여우
+                                센서티브
                                 </Typography>
                                 <Typography variant="body1" 
                                             sx={{ mb: 1.5 }}>
-                                글쓴이 | 프란치스카 비어만 출판사 | 주니어김영사
+                                글쓴이 | 일자 샌드 출판사 | 다산지식하우스
                                 </Typography>
 
                                 <Typography variant="body1" 
                                             sx={{ mb: 1.5 }}>
-                                #동화 #여우 #이솝우화 #교훈
+                                #인문 #심리 #infp #소심 #방탄RM #걱정
                                 </Typography>
                             </Box>
                             
-                            <Box sx={{ mr: 2,
+                            <Box sx={{ mr: 2, ml: 23,
                                     alignItem: 'center',
                                     justifyContent: 'center',
                                    }}>
@@ -328,7 +342,7 @@ export default function Explorer() {
                                     <Typography sx={{fontSize: '15px'}}>도서예약신청</Typography>
                                     <span className="book" onClick={handleWait}
                                         style={{ margin: 3}}>
-                                        {wait ? (<AccessTimeIcon sx={{fontSize:'small', color:'black'}}/>) : (<AccessTimeFilledIcon sx={{fontSize:'small'}}></AccessTimeFilledIcon>)}
+                                        {wait ? (<AccessTimeFilledIcon sx={{fontSize:'small', color:'black'}}/>) : (<AccessTimeIcon sx={{fontSize:'small'}}></AccessTimeIcon>)}
                                     </span>
                                     <Typography sx={{fontSize: '15px'}}>상호대차신청</Typography>
                                     <span className="like" onClick={handleLike}
@@ -347,28 +361,27 @@ export default function Explorer() {
                 <Card sx={{ height: '20vh' }}>
                     <CardContent>
                         <Box sx={{ display: 'flex',
-                            flexDirection: 'row',
-                            justifyContent: 'space-between'}}>
-                            <img src={book1} alt="book1" style={{width:80, height:110}}></img>
+                            flexDirection: 'row'}}>
+                            <img src={book3} alt="book3" style={{width:80, height:110}}></img>
                             <Box sx={{display: 'flex',
-                                ml:2,
+                                ml:5,
                                 flexDirection: 'column'}}>
                                 <Typography variant="h6" 
                                             sx={{ mb: 1.5 }}>
-                                책 먹는 여우
+                                달러구트 꿈 백화점
                                 </Typography>
                                 <Typography variant="body1" 
                                             sx={{ mb: 1.5 }}>
-                                글쓴이 | 프란치스카 비어만 출판사 | 주니어김영사
+                                글쓴이 | 이미예 출판사 | 팩토리나인
                                 </Typography>
 
                                 <Typography variant="body1" 
                                             sx={{ mb: 1.5 }}>
-                                #동화 #여우 #이솝우화 #교훈
+                                #소설 #판타지 #infp #감동 #힐링 #상상
                                 </Typography>
                             </Box>
                             
-                            <Box sx={{ mr: 2,
+                            <Box sx={{ mr: 2, ml:25,
                                     alignItem: 'center',
                                     justifyContent: 'center',
                                    }}>
@@ -397,7 +410,7 @@ export default function Explorer() {
                                     <Typography sx={{fontSize: '15px'}}>도서예약신청</Typography>
                                     <span className="book" onClick={handleWait}
                                         style={{ margin: 3}}>
-                                        {wait ? (<AccessTimeIcon sx={{fontSize:'small', color:'black'}}/>) : (<AccessTimeFilledIcon sx={{fontSize:'small'}}></AccessTimeFilledIcon>)}
+                                        {wait ? (<AccessTimeFilledIcon sx={{fontSize:'small', color:'black'}}/>) : (<AccessTimeIcon sx={{fontSize:'small'}}></AccessTimeIcon>)}
                                     </span>
                                     <Typography sx={{fontSize: '15px'}}>상호대차신청</Typography>
                                     <span className="like" onClick={handleLike}
